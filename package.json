@@ -1,0 +1,46 @@
+{
+  "name": "mserv-auth-jwt",
+  "version": "0.2.0",
+  "description": "Plugin to mserv-auth-jwt middleware providing JWT based authentication.",
+  "keywords": [
+    "npm",
+    "mserv",
+    "mserv-auth-jwt",
+    "authentication",
+    "authorization",
+    "jwt",
+    "scope"
+  ],
+  "homepage": "https://github.com/macprog-guy/mserv-auth-jwt",
+  "main": "./auth.js",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha -R spec --harmony -t 5000 -u bdd ./test.js"
+  },
+  "author": {
+    "name": "Eric Methot",
+    "email": "eric@macprog.com",
+    "url": "https://github.com/macprog-guy/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/macprog-guy/mserv-auth-jwt.git"
+  },
+  "bugs": {
+    "url": "http://github.com/macprog-guy/mserv-auth-jwt/issues"
+  },
+  "license": "MIT",
+  "peerDeependencies": {
+    "mserv": "^0.2.0",
+    "mserv-auth": "^0.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "co": "^4.6.0",
+    "mocha": "^2.2.5",
+    "mserv": "^0.2.0",
+    "mserv-auth": "^0.2.0"
+  },
+  "dependencies": {
+    "jwt-keygrip": "^0.2.0"
+  }
+}
