@@ -48,7 +48,6 @@ describe("mserv-auth-jwt", function(){
 		keys: jwtGood.keys
 	})
 
-
 	it('should execute the action and return ok', wrappedTest(function*(){
 		
 		let token = jwtGood.encode({scope:'root'}),
@@ -64,6 +63,22 @@ describe("mserv-auth-jwt", function(){
 			result = yield service.invoke('private',null, helpers.authorization('Bearer',token))
 
 		result.should.eql({status:'unauthorized',reason:'unauthorized'})
+	}))
+
+	it('should encode the token', wrappedTest(function*(){
+
+		let token1 = jwtGood.encode({scope:'root'}),
+			token2 = service.ext.jwtEncode({scope:'root'})
+
+		token2.should.equal(token1)
+	}))
+
+	it('should decode the token', wrappedTest(function*(){
+
+		let token1 = service.ext.jwtEncode({scope:'root'}),
+			creds  = service.ext.jwtDecode(token1)
+
+		creds.should.eql({scope:'root'})
 	}))
 })
 
