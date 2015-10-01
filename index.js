@@ -18,6 +18,6 @@ module.exports = function MservAuthJWTPlugin(service, options) {
 	service.extend('jwtDecode', jwtDecodeExtension)
 
 	return function*(data) {
-		return jwt.decode(new Buffer(data,'base64'))
+		return jwt.decode(data)
 	}
 }
