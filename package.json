@@ -1,6 +1,6 @@
 {
   "name": "mserv-auth-jwt",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Plugin to mserv-auth-jwt middleware providing JWT based authentication.",
   "keywords": [
     "npm",
@@ -37,10 +37,10 @@
     "chai": "^3.2.0",
     "co": "^4.6.0",
     "mocha": "^2.2.5",
-    "mserv": "^0.2.0",
-    "mserv-auth": "^0.2.0"
+    "mserv": "^0.2.13",
+    "mserv-auth": "^0.2.3"
   },
   "dependencies": {
-    "jwt-keygrip": "^0.2.0"
+    "jwt-keygrip": "^0.2.2"
   }
 }

@@ -51,18 +51,25 @@ describe("mserv-auth-jwt", function(){
 	it('should execute the action and return ok', wrappedTest(function*(){
 		
 		let token = jwtGood.encode({scope:'root'}),
-			result = yield service.invoke('private',null, helpers.authorization('Bearer',token))
+			result = yield service.invoke('private',null, {authorization:'Bearer '+token})
 
 		result.should.eql('ok')
 	}))
 
 
 	it('should not execute the action and return unauthorized', wrappedTest(function*(){
-		
-		let token   = jwtBad.encode({scope:'root'}),
-			result = yield service.invoke('private',null, helpers.authorization('Bearer',token))
 
-		result.should.eql({status:'unauthorized',reason:'unauthorized'})
+		try {		
+			let token  = jwtBad.encode({scope:'root'}),
+				result = yield service.invoke('private',null, {authorization:'Bearer '+token})
+			throw new Error('Invoke did not throw')
+		}
+		catch(err) {
+			if (err.message === 'Invoke did not throw')
+				throw err
+
+			err.message.should.equal('Unauthorized')
+		}		
 	}))
 
 	it('should encode the token', wrappedTest(function*(){
